@@ -26,8 +26,8 @@ class DataBase
 	}
 
 	public function query($line){
-		$result = mysql_query ($line);
-		
+		$result = mysql_query($line);
+		return $result;
 	}
 }
 

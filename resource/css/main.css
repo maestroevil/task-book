@@ -68,5 +68,8 @@ img.dev-img{
 	max-width: 600px;
 	
 	height: 300px;
-
+}
+.status-create-task {
+	width: 100%;
+	text-align: center;
 }

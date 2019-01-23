@@ -4,7 +4,8 @@
 	if(isset($_POST['name']) && $_POST['email'] && $_POST['text'] && $_POST['heading']){
 		$Task->insertTask($_POST['name'],$_POST['email'],$_POST['text'],'0',$_POST['heading']);
 		unset($_POST);
-		$Task->logicCreate = 1;
+		$Task->logicCreate= 1;
+		header('Location: http://task-book/');
 	}
 ?>
 
@@ -16,10 +17,6 @@
 				<button type="button" class="btn btn-secondary">Почта</button>
 				<button type="button" class="btn btn-success">Статус</button>
 				<button type="button" class="btn btn-success" id='btn-create-task'>Создать задание</button>
-		</div>
-		<div class="row">
-			 <h2> <?php $Task->acceptCreate(); ?> </h2>
-			 
 		</div>
 		<div class="bg-dark panel n-block" id='panel-create-task'>
 			<div class="form-create-task">
@@ -63,23 +60,13 @@
 		</div>
 	</div>
 	<div class="row">
+		<div class="status-create-task">
+			<h2 class="text-dark"> <?php if(!empty($_POST['create-task']) || $Task->logicCreate == 1) echo $Task->acceptCreate(); ?> </h2>
+		</div>			
+	</div>
+	<div class="row">
 		<!-- row -->
-		<div class="card col-sm-12 col-md-12 col-lg-4  ">
-			<div class="content">
-				<img class="card-img-top " src="/resource/img/bob.jpg" alt="Card image cap">
-  				<div class="card-body ">
-   			 		<p class="card-text ">
-   			 			<i class="fas fa-user"></i> <b>Имя </b>:Евгений <br>
-   			 			<i class="fas fa-envelope-open"></i> <b>Почта:  </b> libertydremastudia@gmail.com<br>
-   			 			<i class="fas fa-users""></i> <b>Статус: </b> Директор|Рабочий|Стажер <br>
-   			 			<br>
-   			 			<h4>Задание </h4>
-   			 			Разнообразный и богатый опыт рамки и место обучения кадров позволяет оценить значение позиций, занимаемых участниками в отношении поставленных задач. Дорогие друзья, новая модель организационной деятельности позволяет оценить значение системы масштабного изменения ряда параметров.
-   			 		</p>
- 		 		</div>
-			</div>
-		</div>
-		
+		 <?php $Task->selectBlockTask("name"); ?>
 	</div>
 	<div class="row">
 		<nav aria-label="...">

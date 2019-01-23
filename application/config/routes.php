@@ -24,6 +24,10 @@ return [
 		'controller' => 'about',
 		'action' => 'dev',
 	],
+	'task/redakt' => [
+		'controller' => 'about',
+		'action' => 'dev',
+	],
 ];
 
 ?>
