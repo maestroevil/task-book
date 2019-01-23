@@ -3,9 +3,8 @@
 <?
 	// Подключение класса Task и создание обьекта Task.
 	require "application/class/Task.php";
-	var_dump($_POST);
 	$Task = new Task;
-	//Запись в БД.
+	//Запись в БД задания
 	if(isset($_POST['name']) && $_POST['email'] && $_POST['text'] && $_POST['heading']){
 		$Task->insertTask($_POST['name'],$_POST['email'],$_POST['text'],'0',$_POST['heading']);
 		$Task->logicCreate= 1;
@@ -15,6 +14,7 @@
 
 <div class="container-fluid">
 	<div class="row">
+		<!-- Панель сортировки -->
 		<div class="bg-dark panel">
 				<span class="color-dark text-white">Сортировать: </span>
 				<form action="http://task-book/" method="POST">
@@ -41,12 +41,9 @@
 						</tr>
 					</table>	
 				</form>
-				
-				<button type="button" class="btn btn-primary">Имя</button>
-				<button type="button" class="btn btn-secondary">Почта</button>
-				<button type="button" class="btn btn-success">Статус</button>
 				<button type="button" class="btn btn-success" id='btn-create-task'>Создать задание</button>
 		</div>
+		<!-- Панель создания задания с  проверкой на пустоту -->
 		<div class="bg-dark panel n-block" id='panel-create-task'>
 			<div class="form-create-task">
 				<form action="http://task-book/" method="POST">
@@ -95,8 +92,8 @@
 	</div>
 	<div class="row">
 		<!-- row -->
+		<!-- Вывод блоков в сортировке, либо без. -->
 		 <?php
-		 	
 		 		$keys = array_keys($_POST);
 		 		if(!empty($keys)){
 					$sort_type = $keys[0];
@@ -110,6 +107,7 @@
 		 	$Task->selectBlockTask($arr_sort["sort"],$arr_sort["cource"]);
 		  ?>
 	</div>
+	<!-- Навигация -->
 	<div class="row">
 		<nav aria-label="...">
  			<ul class="pagination">

@@ -16,6 +16,11 @@ class Task
 	}
 	// Создаем запись задачи в БД.
 	public function insertTask($name,$email,$text,$status,$heading){
+		$name = preg_replace("/[^a-z0-9]/i", "",$name);
+		$email = preg_replace("/[^a-z0-9]/i", "",$email);
+		$status = preg_replace("/[^a-z0-9]/i", "",$status);
+		$heading = preg_replace("/[^a-z0-9]/i", "",$heading);
+		$text = preg_replace("/[^a-z0-9]/i", "",$text);
 		$this->DataBase->query("INSERT INTO `task` (`id`, `name`, `e-mail`, `text`, `status`, `heading`) VALUES (NULL, '$name', '$email', '$text', '$status', '$heading');");
 	}
 	//Проверяем, создалась запись или нет.
@@ -31,6 +36,7 @@ class Task
 	//Проверяем, что выбрал пользователь для сортировки.
 	public function getSortValue($nameSort){
 		$arr_sort["sort"] = "all";
+		$arr_sort["cource"] = "all";
 		if($nameSort == "nameUp"){
 			$arr_sort["sort"] = "name";
 			$arr_sort["cource"] = "ASC";
@@ -93,6 +99,12 @@ class Task
 	}
 	//функция  для редактирования  записи Task в бд
 	public function updateBlockTask($id,$name,$email,$status,$heading,$text){
+		//Проводоим проверку от XSS-атаки.
+		$name = preg_replace("/[^a-z0-9]/i", "",$name);
+		$email = preg_replace("/[^a-z0-9]/i", "",$email);
+		$status = preg_replace("/[^a-z0-9]/i", "",$status);
+		$heading = preg_replace("/[^a-z0-9]/i", "",$heading);
+		$text = preg_replace("/[^a-z0-9]/i", "",$text);
 		$query = $this->DataBase->query("UPDATE `task` SET `name` = '$name', `e-mail` = '$email', `text` = '$text', `status` = '$status', `heading` = '$heading' WHERE `id` ='$id' ;");
 	}
 	//Создание графической оболчки обьекта Task
