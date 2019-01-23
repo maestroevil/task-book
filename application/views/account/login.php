@@ -1,10 +1,14 @@
+<!-- Страница отображает форму входа для администратора   -->
+
 <?php
+// Скрипт для авторизации
 	if(isset($_POST['login']) && isset($_POST['password'])){
 	 	$Autorization = new	Autorization;
 	 	$Autorization->setUser($_POST['login'],$_POST['password']);
 	 	$Autorization->checkUser();
 	}
 ?>
+<!-- Форма входа -->
 <div class="container-fluid">
 	<!-- container -->
 	<div class="row">
@@ -23,6 +27,7 @@
 			  <button type="submit" class="btn btn-primary">Войти</button>
 			</form>
 		</div>
+		<!-- Если администратор залогинился, ему отображается информация  про это. -->
 		<?php } else{ ?>
 		<h2> Вы авторизовались : <?php echo $_SESSION["nameUser"]; ?></h2>
 		<?php } ?>

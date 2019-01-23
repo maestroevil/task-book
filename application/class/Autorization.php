@@ -1,20 +1,16 @@
 <?php
-// Класс "Router" отвечает за формирование ссылки.
-
-
+// Класс "Autorization" отвечает за авторизацию администратора.
 class Autorization {
     protected $login ;
     protected $password;
     
 
-    public function __construct(){
-
-    }
+    //Сохраняет в обьекте пароль и логин
     public function setUser($login,$password){
         $this->setLogin($login);
         $this->setPassword($password);
     }
-
+    //Проверяет на наличие данного пользователя и регистрирует это в сессиии.
     public function checkUser(){
         $login = "admin";
         $password = "123";
@@ -25,11 +21,11 @@ class Autorization {
         else
             $_SESSION['autorization'] = false;
     }
-
+    //Задает логин
     public function setLogin($login){
         $this->login = $login;
     }
-
+    //Задает пароль
     public function setPassword($password){
         $this->password = $password;
     }

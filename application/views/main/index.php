@@ -1,9 +1,13 @@
+<!-- Данная страница отображает визуальную часть "Приложения задачник"-->
+
 <?
+	// Подключение класса Task и создание обьекта Task.
 	require "application/class/Task.php";
+	var_dump($_POST);
 	$Task = new Task;
+	//Запись в БД.
 	if(isset($_POST['name']) && $_POST['email'] && $_POST['text'] && $_POST['heading']){
 		$Task->insertTask($_POST['name'],$_POST['email'],$_POST['text'],'0',$_POST['heading']);
-		unset($_POST);
 		$Task->logicCreate= 1;
 		header('Location: http://task-book/');
 	}
@@ -13,6 +17,31 @@
 	<div class="row">
 		<div class="bg-dark panel">
 				<span class="color-dark text-white">Сортировать: </span>
+				<form action="http://task-book/" method="POST">
+					<table>
+						<tr>
+							<th class="text-white text-center">Имя</th>
+							<th class="text-white text-center">Почта </th>
+							<th class="text-white text-center">Статус </th>
+							<td></td>
+						</tr>
+						<tr>
+							<td>
+								<button type="submit" name="nameUp"><i class='fas fa-arrow-up'></i></button>
+								<button type="submit" name="nameDown"><i class='fas fa-arrow-down'></i></button>
+							</td>
+							<td>
+								<button type="submit" name="emailUp"><i class='fas fa-arrow-up'></i></button>
+								<button type="submit" name="emailDown"><i class='fas fa-arrow-down'></i></button>
+							</td>
+							<td>
+								<button type="submit" name="statusUp"><i class='fas fa-arrow-up'></i></button>
+								<button type="submit" name="statusDown"><i class='fas fa-arrow-down'></i></button>
+							</td>
+						</tr>
+					</table>	
+				</form>
+				
 				<button type="button" class="btn btn-primary">Имя</button>
 				<button type="button" class="btn btn-secondary">Почта</button>
 				<button type="button" class="btn btn-success">Статус</button>
@@ -54,7 +83,7 @@
 					<input  class="btn btn-success" type="submit" name="create-task" value="Создать задание" >
 					<br>
 					<textarea class="input-text-task" name='text'><?php echo (!empty($_POST['text']) &&  !empty($_POST['create-task']) ? "$_POST[text]" : "" )?></textarea>
-					<?php echo (!empty($_POST['text']) && !empty($_POST['create-task']) ? ""  : "<span class='text-danger'>  Заполните поле</span>")  ?>
+					<?php echo (!empty($_POST['text']) && !empty($_POST['create-task']) ? ""  : "<span class='text-danger'>  Заполните поле</span>") ?>
 				</form>
 			</div>
 		</div>
@@ -66,7 +95,20 @@
 	</div>
 	<div class="row">
 		<!-- row -->
-		 <?php $Task->selectBlockTask("name"); ?>
+		 <?php
+		 	
+		 		$keys = array_keys($_POST);
+		 		if(!empty($keys)){
+					$sort_type = $keys[0];
+					$arr_sort = $Task->getSortValue($sort_type);
+		 		}
+		 		else{
+		 			$arr_sort['sort'] = "all";
+		 			$arr_sort['cource'] = "all";
+		 		}
+		 	
+		 	$Task->selectBlockTask($arr_sort["sort"],$arr_sort["cource"]);
+		  ?>
 	</div>
 	<div class="row">
 		<nav aria-label="...">

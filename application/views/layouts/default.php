@@ -1,3 +1,4 @@
+<!-- Данный файл в себе содержит главный шаблон сайта. -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,13 +17,15 @@
 	<link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,300,400,500,700,700i" rel="stylesheet">
 </head>
 <body>
-	
+	<!-- Подключение меню -->
 	<?php 
 	include "/resource/layots-components/".$layout."/menu.php";
 	?>
+	<!-- Подключение контента -->
 	<div class="content">
 		<?php echo $content;?>
 	</div>
+	<!-- Подключение футера -->
 	<?
 	include "/resource/layots-components/".$layout."/footer.php";
 	?>

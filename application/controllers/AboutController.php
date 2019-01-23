@@ -1,5 +1,5 @@
 <?php
-// Данный класс 
+// Данный класс отвечает за путь контроллера "About"
 namespace application\controllers;
 
 use application\core\Controller;

@@ -73,3 +73,14 @@ img.dev-img{
 	width: 100%;
 	text-align: center;
 }
+.redaktor-task{
+	width: 100%;
+	text-align: center;
+}
+.redaktor-task form{
+	display: inline-block;
+ 	width: 500px;
+}
+.redaktor-task input,textarea {
+	width: 350px;	
+}
