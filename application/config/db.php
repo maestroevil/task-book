@@ -5,6 +5,7 @@ return [
 	'name' => 'DB',
 	'user' => 'root',
 	'password' => '',
+	'db' => "task-book",
 ];
 
 ?>

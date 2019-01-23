@@ -1,3 +1,13 @@
+<?
+	require "application/class/Task.php";
+	$Task = new Task;
+	if(isset($_POST['name']) && $_POST['email'] && $_POST['text'] && $_POST['heading']){
+		$Task->insertTask($_POST['name'],$_POST['email'],$_POST['text'],'0',$_POST['heading']);
+		unset($_POST);
+		$Task->logicCreate = 1;
+	}
+?>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="bg-dark panel">
@@ -7,15 +17,47 @@
 				<button type="button" class="btn btn-success">Статус</button>
 				<button type="button" class="btn btn-success" id='btn-create-task'>Создать задание</button>
 		</div>
+		<div class="row">
+			 <h2> <?php $Task->acceptCreate(); ?> </h2>
+			 
+		</div>
 		<div class="bg-dark panel n-block" id='panel-create-task'>
 			<div class="form-create-task">
 				<form action="http://task-book/" method="POST">
-					<span class="text-white"> Имя: </span> <input type="text" name="name">
-					<span class="text-white"> E-mail: </span> <input type="text" name="e-mail">
-					<span class="text-white"> Название задания: </span> <input type="text" name="e-mail">
+					<table>
+						<tr>
+
+							<td><span class="text-white"> Имя: </span></td>
+							<td>
+								<input type="text" name="name" 
+								<?php echo (!empty($_POST['name']) &&  !empty($_POST['create-task']) ? "value='$_POST[name]'" : "" )?>>
+							</td>
+							<td> 
+								<?php echo (!empty($_POST['name']) && !empty($_POST['create-task']) ? ""  : "<span class='text-danger'>  Заполните поле</span>")  ?>
+							</td>
+						</tr>
+						<tr>
+							<td><span class="text-white"> E-mail: </span></td>
+							<td>
+								<input type="text" name="email" <?php echo (!empty($_POST['name']) &&  !empty($_POST['create-task']) ? "value='$_POST[email]'" : "" )?>>
+							</td>
+							<td> 
+								<?php echo (!empty($_POST['email']) && !empty($_POST['create-task']) ? ""  : "<span class='text-danger'>  Заполните поле</span>")  ?>
+							</td>
+						</tr>
+						<tr>
+							<td><span class="text-white"> Название задания: </span>  </span></td>
+							<td>
+								<input type="text" name="heading" <?php echo (!empty($_POST['heading']) &&  !empty($_POST['create-task']) ? "value='$_POST[heading]'" : "" )?>> 
+							</td>
+							<td> <?php echo (!empty($_POST['heading']) && !empty($_POST['create-task']) ? ""  : "<span class='text-danger'>  Заполните поле</span>")  ?></td>
+						</tr>
+					</table>
+					 
 					<input  class="btn btn-success" type="submit" name="create-task" value="Создать задание" >
 					<br>
-					<textarea class="input-text-task" name='text-task'></textarea>
+					<textarea class="input-text-task" name='text'><?php echo (!empty($_POST['text']) &&  !empty($_POST['create-task']) ? "$_POST[text]" : "" )?></textarea>
+					<?php echo (!empty($_POST['text']) && !empty($_POST['create-task']) ? ""  : "<span class='text-danger'>  Заполните поле</span>")  ?>
 				</form>
 			</div>
 		</div>
