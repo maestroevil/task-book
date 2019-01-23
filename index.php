@@ -1,7 +1,11 @@
 <?php
 //Главный файл, на который происходит редирект с помощью файла .htaccess.
 require 'application/lib/Dev.php';
+// Class
+require 'application/class/Autorization.php';
 
+
+// Core
 use application\core\Router;
 
 spl_autoload_register(function($class) {
@@ -15,3 +19,5 @@ session_start();
 
 $router = new Router;
 $router->run();
+
+?>

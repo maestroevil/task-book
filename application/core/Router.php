@@ -3,6 +3,7 @@
 namespace application\core;
 
 use application\core\View;
+use application\core\Autorization;
 
 class Router {
     // Массивы для хранения значений ссылки

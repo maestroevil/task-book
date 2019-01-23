@@ -1,0 +1,72 @@
+body{
+	font-family: 'Fira Sans', sans-serif;
+}
+.logo {
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.btn-1{
+	text-transform: uppercase;
+	background-color: white;
+	color:black;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-weight: bold;
+
+}
+.btn-1:hover{
+	background-color: black;
+	cursor: pointer;
+	color: white;
+	text-decoration: none;
+}
+p{
+	margin-bottom: 0px;
+}
+.card {
+
+	background-color: unset;
+	padding: 10px;
+	border:unset;
+	text-align: center;
+	
+}
+.card .content{
+	background-color: white;
+}
+.card img{
+	width: 400px;
+	height: 400px;
+}
+
+.panel {
+	width: 100%;
+	margin: 10px;
+	padding: 10px;
+	text-transform: uppercase;
+}
+img.dev-img{
+	width: 200px;
+	height: 250px;
+}
+.form-login{
+	width: 100%;
+	text-align: center;
+}
+.form-login form{
+	display: inline-block;
+	text-align: center;
+	width: 100%;
+	max-width: 350px;
+}
+.n-block{
+	display: none;
+}
+.input-text-task{
+	margin-top: 20px;
+	width: 100%;
+	max-width: 600px;
+	
+	height: 300px;
+
+}

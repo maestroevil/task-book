@@ -21,6 +21,7 @@ class View {
 			ob_start();
 			require $path;
 			$content = ob_get_clean();
+			$layout = $this->layout;
 			require 'application/views/layouts/'.$this->layout.'.php';
 		}
 	}

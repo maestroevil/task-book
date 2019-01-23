@@ -16,7 +16,14 @@ return [
 		'controller' => 'account',
 		'action' => 'register',
 	],
-	
+	'about/task' => [
+		'controller' => 'about',
+		'action' => 'task',
+	],
+	'about/dev' => [
+		'controller' => 'about',
+		'action' => 'dev',
+	],
 ];
 
 ?>
