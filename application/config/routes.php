@@ -11,11 +11,6 @@ return [
 		'controller' => 'account',
 		'action' => 'login',
 	],
-
-	'account/register' => [
-		'controller' => 'account',
-		'action' => 'register',
-	],
 	'about/task' => [
 		'controller' => 'about',
 		'action' => 'task',

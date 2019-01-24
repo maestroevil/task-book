@@ -7,6 +7,7 @@
 	 	$Autorization->setUser($_POST['login'],$_POST['password']);
 	 	$Autorization->checkUser();
 	}
+
 ?>
 <!-- Форма входа -->
 <div class="container-fluid">
@@ -24,7 +25,7 @@
 			    <label for="exampleInputPassword1">Пароль</label>
 			    <input type="password" name='password' class="form-control" id="exampleInputPassword1" placeholder="Введите пароль" maxlength="20">
 			  </div>
-			  <button type="submit" class="btn btn-primary">Войти</button>
+			  <button type="submit" name="buttonEnter" class="btn btn-primary">Войти</button>
 			</form>
 		</div>
 		<!-- Если администратор залогинился, ему отображается информация  про это. -->
